@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>금남지하도상가 : 상가정보</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="static/css/info.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="left">
+        <div class="logo">
+          <a href="#"><img src="/static/img/그미나미.png" alt="" /></a>
+        </div>
+      </div>
+      <div class="right">
+        <div class="mobile-menu">메뉴</div>
+        <ul class="menu-list">
+          <li class="nav-item">
+            <a class="nav-link nav-link-1" href="/">메인화면</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-1" href="/">출입구정보</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link nav-link-1 active"
+              aria-current="page"
+              href="/info"
+              >상가정보</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="tm-hero d-flex justify-content-center align-items-center">
+        <div class="d-flex tm-search-form">
+          <input
+            id="searchInput"
+            class="form-control tm-search-input border-0"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)"
+          />
+          <button
+            id="searchButton"
+            class="btn btn-outline-primary tm-search-btn"
+            type="button"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </main>
+    <section>
+      <div class="content-list">
+        <h1>화장품(미용)</h1>
+        <div class="slider"></div>
+        <div class="prev">
+          <i class="fa-solid fa-angle-right prev-arrow"></i>
+        </div>
+        <div class="next"><i class="fa-solid fa-angle-right"></i></div>
+      </div>
+    </section>
+
+    <div class="modal" id="myModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <script>
+      function openModal(fileName) {
+        const modal = document.getElementById("myModal");
+        const modalContent = document.getElementById("modalContent");
+
+        // Set the modal content with the clicked image
+        modalContent.innerHTML = `<img src="static/img/${fileName}" alt="">`;
+
+        // Display the modal
+        modal.style.display = "flex"; // Use 'flex' for centering
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "none";
+      }
+
+      const sliderContainer = document.querySelector(".slider");
+
+      // 이미지 파일명을 저장한 배열
+      const imageFileNames = [];
+      for (let i = 1; i <= 16; i++) {
+        imageFileNames.push(`img-${i}.jpg`);
+      }
+
+      // 이미지를 슬라이더에 추가
+      imageFileNames.forEach((fileName) => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<img src="static/img/${fileName}" alt="" onclick="openModal('${fileName}')">`;
+        sliderContainer.appendChild(div);
+      });
+
+      // 슬라이더 기능 추가 (이미지 슬라이드)
+      const nextButton = document.querySelector(".next");
+      const prevButton = document.querySelector(".prev");
+      const slider = document.querySelector(".slider");
+
+      nextButton.addEventListener("click", () => {
+        slider.scrollBy({
+          left: slider.offsetWidth,
+          behavior: "smooth",
+        });
+      });
+
+      prevButton.addEventListener("click", () => {
+        slider.scrollBy({
+          left: -slider.offsetWidth,
+          behavior: "smooth",
+        });
+      });
+
+      const images = document.querySelectorAll(".slider .item img");
+      images.forEach((img) => {
+        img.addEventListener("click", (event) => {
+          const fileName = event.target.src.split("/").pop(); // Extract the filename from the image source
+          openModal(fileName);
+        });
+      });
+
+      closeModal();
+    </script>
+  </body>
+</html>
