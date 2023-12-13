@@ -89,23 +89,6 @@
     </div>
 
     <script>
-      function openModal(fileName) {
-        const modal = document.getElementById("myModal");
-        const modalContent = document.getElementById("modalContent");
-
-        // Set the modal content with the clicked image
-        modalContent.innerHTML = `<img src="static/img/${fileName}" alt="">`;
-
-        // Display the modal
-        modal.style.display = "flex"; // Use 'flex' for centering
-      }
-
-      // Function to close the modal
-      function closeModal() {
-        const modal = document.getElementById("myModal");
-        modal.style.display = "none";
-      }
-
       const sliderContainer = document.querySelector(".slider");
 
       // 이미지 파일명을 저장한 배열
@@ -141,13 +124,60 @@
         });
       });
 
+      const imageDescriptions = {};
+
+      // 이미지 개수만큼 반복하며 imageDescriptions에 이미지와 설명 추가
+      for (let i = 1; i <= 100; i++) {
+        const fileName = `img-${i}.jpg`;
+        const description = `상가명 : {{ data.상가명 }} <br> 카테고리 : {{ data.업종 }} <br> 위치 : {{ data.위치 }}`;
+        imageDescriptions[fileName] = description;
+      }
+
       const images = document.querySelectorAll(".slider .item img");
       images.forEach((img) => {
         img.addEventListener("click", (event) => {
-          const fileName = event.target.src.split("/").pop(); // Extract the filename from the image source
-          openModal(fileName);
+          const fileName = event.target.src.split("/").pop(); // 클릭된 이미지의 파일명을 가져옵니다.
+          const description = imageDescriptions[fileName]; // 이미지 설명을 가져옵니다.
+          openModal(fileName, description); // 모달을 열면서 이미지와 설명을 전달합니다.
         });
       });
+
+      // 모달에 이미지와 텍스트를 표시하는 함수
+      function openModal(fileName, description) {
+        const modal = document.getElementById("myModal");
+        const modalContent = document.getElementById("modalContent");
+
+        // 이미지 태그 생성
+        const imgElement = document.createElement("img");
+        imgElement.src = "static/img/" + fileName;
+        imgElement.alt = "Image";
+
+        // 텍스트 요소 생성
+        const textElement = document.createElement("div");
+        textElement.innerHTML = description;
+        textElement.style.color = "black";
+
+        // 모달 내용 초기화 후 이미지와 텍스트 추가
+        modalContent.innerHTML = "";
+        modalContent.appendChild(imgElement);
+        modalContent.appendChild(textElement);
+
+        // 모달 열기
+        modal.style.display = "flex";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "none";
+      }
+
+      // 모달 외부 클릭 시 모달 닫기
+      window.onclick = function (event) {
+        const modal = document.getElementById("myModal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
 
       closeModal();
     </script>
