@@ -151,6 +151,7 @@ section .content-list h1 {
   margin-left: 2rem;
   margin-bottom: 1rem;
   margin-top: 0.5rem;
+  font-size: 30px;
 }
 section .content-list .slider {
   display: flex;
@@ -162,17 +163,47 @@ section .content-list .slider::-webkit-scrollbar {
   display: none;
 }
 section .content-list .slider .item {
-  min-width: 250px;
-  height: 150px;
+  min-width: 350px;
+  height: 250px;
   background: #262626;
   background: linear-gradient(312deg, #262626 0%, #333333 54%, #2a2a2a 100%);
   border-radius: 5px;
+  position: relative;
 }
+
+section .content-list .slider .item::before {
+  content: 'View More'; /* 표시할 텍스트를 여기에 입력합니다. */
+  position: absolute; /* 절대 위치 설정 */
+  top: 50%; /* 부모 요소의 상단에서 중앙으로 이동 */
+  left: 50%; /* 부모 요소의 왼쪽에서 중앙으로 이동 */
+  transform: translate(-50%, -50%); /* 중앙 정렬을 위한 변환 */
+  opacity: 0; /* 초기에는 숨겨진 상태로 설정합니다. */
+  transition: opacity 0.3s ease; /* 변화에 부드러운 애니메이션을 추가합니다. */
+  text-align: center; /* 텍스트를 가운데 정렬합니다. */
+  color: white; /* 텍스트 색상 설정 */
+  font-size: 25px; /* 텍스트 크기 설정 */
+  z-index: 1; /* 이미지 위에 텍스트가 표시되도록 z-index 설정 */
+}
+
+section .content-list .slider .item:hover::before {
+  opacity: 1; /* 이미지 호버 시 텍스트가 나타나도록 설정합니다. */
+}
+
+
 section .content-list .slider .item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* 변화에 부드러운 애니메이션을 추가 */
+  border-radius: 5px;
 }
+
+section .content-list .slider .item img:hover {
+  transform: scale(1.05); /* 마우스 호버 시 약간 확대 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 이미지 주변에 약간의 그림자 효과를 추가합니다. */
+  opacity: 0.7; 
+}
+
 section .content-list .prev-arrow {
   transform: rotateY(180deg);
 }
@@ -257,45 +288,45 @@ section .tm-video-item p {
 section .tm-gallery div.d-block { animation: show .5s ease; }
 
 figure.effect-ming {
-	background: #030c17;
+   background: #030c17;
 }
 
 figure.effect-ming img {
-	opacity: 0.9;
-	-webkit-transition: opacity 0.35s;
-	transition: opacity 0.35s;
+   opacity: 0.9;
+   -webkit-transition: opacity 0.35s;
+   transition: opacity 0.35s;
 }
 
 figure.effect-ming figcaption::before {
-	position: absolute;
-	top: 30px;
-	right: 30px;
-	bottom: 30px;
-	left: 30px;
-	border: 2px solid #fff;
-	box-shadow: 0 0 0 30px rgba(255,255,255,0.2);
-	content: '';
-	opacity: 0;
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;
-	-webkit-transform: scale3d(1.4,1.4,1);
-	transform: scale3d(1.4,1.4,1);
+   position: absolute;
+   top: 30px;
+   right: 30px;
+   bottom: 30px;
+   left: 30px;
+   border: 2px solid #fff;
+   box-shadow: 0 0 0 30px rgba(255,255,255,0.2);
+   content: '';
+   opacity: 0;
+   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+   transition: opacity 0.35s, transform 0.35s;
+   -webkit-transform: scale3d(1.4,1.4,1);
+   transform: scale3d(1.4,1.4,1);
 }
 
 figure.effect-ming h2 {
     font-size: 1.3em;
-	opacity: 0;
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;
-	-webkit-transform: scale(1.5);
-	transform: scale(1.5);
+   opacity: 0;
+   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+   transition: opacity 0.35s, transform 0.35s;
+   -webkit-transform: scale(1.5);
+   transform: scale(1.5);
 }
 
 figure.effect-ming:hover figcaption::before,
 figure.effect-ming:hover h2 {
-	opacity: 1;
-	-webkit-transform: scale3d(1,1,1);
-	transform: scale3d(1,1,1);
+   opacity: 1;
+   -webkit-transform: scale3d(1,1,1);
+   transform: scale3d(1,1,1);
 }
 
 figure.effect-ming:hover figcaption { background-color: rgba(58,52,42,0); }

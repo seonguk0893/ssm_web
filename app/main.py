@@ -34,7 +34,7 @@ def info():
         cursor.execute(
             "SELECT * FROM `subway`.`subway` WHERE `업종` = '화장품(미용)' ORDER BY `위치` ASC LIMIT 300 OFFSET 0;")
 
-        data = cursor.fetchone()  # 가져온 데이터를 변수에 저장
+        data = cursor.fetchall()  # 가져온 데이터를 변수에 저장
     # HTML 템플릿에 데이터 전달
     return render_template('info.html', data=data)
 
