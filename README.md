@@ -1,7 +1,7 @@
 # Geumnam Underground Shopping Mall Self-Driving Robot Web
 
-#### subway_shoppingmall_web is a web application built using Flask and contains sensing information, shopping mall information, and entrance information of the Geumnam Underground Shopping Mall located in Gwangju.
-#### subway_shoppingmall_web은 Flask를 사용하여 구축된 웹 애플리케이션으로 광주에 위치한 금남지하도상가의 센싱정보와 상가정보, 출입구정보를 담고 있습니다.
+#### ssm_web is a web application built using Flask and contains sensing information, shopping mall information, and entrance information of the Geumnam Underground Shopping Mall located in Gwangju.
+#### ssm_web은 Flask를 사용하여 구축된 웹 애플리케이션으로 광주에 위치한 금남지하도상가의 센싱정보와 상가정보, 출입구정보를 담고 있습니다.
 
 
 This project is built with :
