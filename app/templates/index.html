@@ -166,13 +166,6 @@
         document.getElementById('lux_').innerHTML = lux + ' lux'
         document.getElementById("foot_").innerText = Math.floor(Math.random() * 1000)  + ' 명';
         document.getElementById('voc_').innerHTML = voc + ' 단계'
-
-        var elementsToChangeFont = ['Date_', 'temperature_', 'humidity_', 'co2_', 'lux_', 'foot_', 'voc_'];
-        for (var i = 0; i < elementsToChangeFont.length; i++) {
-            var elementId = elementsToChangeFont[i];
-            document.getElementById(elementId).style.fontFamily = 'GmarketSansMedium', sans-serif;
-            ; // 원하는 폰트로 변경
-        }
       })
     </script>
 
