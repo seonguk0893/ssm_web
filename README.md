@@ -40,4 +40,4 @@ This project is built with :
 ---
 
 
-#### subway_shoppingmall_web was created by Seongha Kim, Seonguk Kim
+#### ssm_web was created by Seongha Kim, Seonguk Kim
