@@ -13,7 +13,7 @@ This project is built with :
 ## Installation 📦
 ### To install subway_shoppingmall_web, follow these steps:
 ## 1. Clone this repository:
->'https://github.com/cookiesthatimade/subway_shoppingmall_web.git'
+>'https://github.com/seonguk0893/ssm.git'
 ## 2. Navigate to the project directory:
 
 
