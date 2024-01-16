@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <!-- <meta http-equiv="refresh" content="5; url=/"> -->
+    <title>금남지하도상가 : 상가정보</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="static/css/escort.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="left">
+        <div class="logo">
+          <a href="#"><img src="/static/img/logo.png" alt="" /></a>
+        </div>
+      </div>
+      <div class="right">
+        <div class="mobile-menu">메뉴</div>
+        <ul class="menu-list">
+          <li class="nav-item">
+            <a class="nav-link nav-link-1" href="/" style="font-size: 1.5rem;">실내환경정보</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-1 active" href="/escort" style="font-size: 1.75rem;">출입구정보</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-1" href="/info" style="font-size: 1.5rem;">상가정보</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="title_st">출입구 위치도 <span>(이미지 클릭 시 해당 출입구로 안내)</span></h1>
+          </div>
+        </div>
+      </div>
+      <div class="image-container">
+        <img src="/static/img/area.png" alt="" />
+        <div class="area-color" style="position: absolute; top: 371px; right: 18px; width: 130px; height: 50px; border: 8px solid red;"></div>
+        <div class="area-color" style="position: absolute; top: 371px; right: 375px; width: 150px; height: 50px; border: 8px solid red;"></div>
+        <div class="area-color" style="position: absolute; top: 371px; left: 396px; width: 130px; height: 50px; border: 8px solid red;"></div>
+        <div class="area-color" style="position: absolute; top: 371px; left: 160px; width: 130px; height: 50px; border: 8px solid red;"></div> 
+
+        <div class="area-color" style="position: absolute; top: 666px; left: 16px; width: 130px; height: 50px; border: 8px solid red;"></div>
+        <div class="area-color" style="position: absolute; top: 666px; left: 377px; width: 152px; height: 50px; border: 8px solid red;"></div>  
+        <div class="area-color" style="position: absolute; top: 666px; right: 266px; width: 258px; height: 50px; border: 8px solid red;"></div>
+        <div class="area-color" style="position: absolute; top: 666px; right: 3px; width: 233px; height: 50px; border: 8px solid red;"></div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="title_st">출입구 안내 버튼 <span>(이미지 클릭 시 해당 출입구로 안내)</span></h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-wrapper">
+        <div class="modal">
+          <div class="head">
+            <a class="btn-close trigger" href="#">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="content">
+            <div class="exit-number">
+              <h1></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="imgContainer"></div>
+      
+    </main>
+
+    <script src="static/js/escort.js"></script>
+    
+  </body>
+</html>
