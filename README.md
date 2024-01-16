@@ -34,7 +34,8 @@ This project is built with :
 ```
 ## 6 . Run the server
 ```bash
-  python3 main.py
+  python3 main.py # mac
+  python main.py # windows
 ```
 ## 7 . Go to localhost:8000
 ---
