@@ -13,7 +13,7 @@ This project is built with :
 ## Installation 📦
 ### To install subway_shoppingmall_web, follow these steps:
 ## 1. Clone this repository:
->'https://github.com/seonguk0893/ssm.git'
+>'https://github.com/seonguk0893/ssm_web.git'
 ## 2. Navigate to the project directory:
 
 
