@@ -22,6 +22,14 @@
   border-left: 1rem solid #dc3545 !important;
 }
 
+
+#Date_ {
+  color: white; 
+  margin-block-end: 1rem; 
+  font-size: 2rem;
+  font-family: 'GmarketSansMedium', sans-serif;
+}
+
 .card {
   border: none;
   /* 카드 테두리 제거 */
