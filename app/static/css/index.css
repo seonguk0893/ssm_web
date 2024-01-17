@@ -168,10 +168,14 @@ body {
 
 .tm-mb-74 {
   font-size: 2rem;
+  margin: 0;
 }
 
 .h2 {
   font-size: 92px;
+  height: 100px;
+  margin-top: 2rem;
+  letter-spacing: -2px; /* 음수 값으로 조절하여 가로 간격을 줄입니다. */
 }
 
 .text-secondary1 {
@@ -194,14 +198,16 @@ body {
   font-size: 5.5rem; /* Adjust the font size as needed */
   color: #ffffff; /* Set the text color */
   font-family: 'GmarketSansMedium', sans-serif;
+  height: 100px;
 }
 
 
 /* Center the parent container */
 .parent {
   flex-direction: column; /* 세로 방향으로 배치 */
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, -15%);
+  margin-top: 3rem;
 }
