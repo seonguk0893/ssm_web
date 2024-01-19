@@ -28,19 +28,20 @@ var buttonTexts = [
 
 // 1부터 4까지의 이미지 버튼 생성
 for (var i = 1; i <= 4; i++) {
-  var imageButton = createImageButton(i);
+  var imageButton = createImageButton("button" + i, i);
   imgContainer.appendChild(imageButton);
 }
 
 // 19부터 22까지의 이미지 버튼 생성
 for (var j = 19; j <= 22; j++) {
-  var imageButton = createImageButton(j);
+  var imageButton = createImageButton("button" + j, j);
   imgContainer.appendChild(imageButton);
 }
 
 // 이미지 버튼을 생성하는 함수
-function createImageButton(value) {
+function createImageButton(id, value) {
   var imgButton = document.createElement("div");
+  imgButton.id = id;
   imgButton.className = "image-button";
   imgButton.style.backgroundImage = "url('/static/img/" + value + ".jpg')";
   imgButton.style.backgroundSize = "cover";
