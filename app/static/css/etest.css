@@ -16,6 +16,7 @@
 body {
   background-color: #141414;
   overflow-x: hidden;
+  overflow-y: hidden; /* 이 부분을 추가하면 세로 스크롤이 나타나지 않습니다. */
 }
 
 a {
@@ -382,135 +383,289 @@ label {
   }
 }
 
-#imgContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 0;
-  /* 이미지 버튼 간의 간격 */
-  width: 100%;
-  /* 이미지 버튼 컨테이너의 고정된 너비 */
-  height: 250px;
-  /* 이미지 버튼 컨테이너의 고정된 높이 */
-  justify-items: center;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap");
+:root {
+  --card-width: 200px;
+  --card-height: 300px;
+  --card-transition-duration: 800ms;
+  --card-transition-easing: ease;
 }
 
-.image-button {
-  cursor: pointer;
-  margin: 5px;
-  width: 500px;
-  /* 이미지 버튼의 너비 */
-  height: 250px;
-  /* 이미지 버튼의 높이 */
+button {
   border: none;
   background: none;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-  border-radius: 5px;
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+  border: none;
 }
 
-.image-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  opacity: 0.7;
-}
-
-.image-button .text-overlay {
+.app {
   position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-size: 24px;
-  /* 텍스트 크기 조절 */
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-/* Add your existing CSS styles here */
-
-.modal-wrapper {
+.app__bg {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: fixed;
-  top: 0;
+  z-index: -5;
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+.app__bg::before {
+  content: "";
+  position: absolute;
   left: 0;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.25s ease-in-out;
-  z-index: 999; /* 높은 값으로 설정하여 모달이 위에 표시되도록 함 */
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 1;
+  opacity: 0.8;
 }
-
-.modal-wrapper.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal {
-  width: 800px;
-  height: 800px;
-  position: fixed;
-  top: 65%;
+.app__bg__image {
+  position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
-  border-radius: 50%; /* 원형으로 만들기 */
-  overflow: hidden; /* 원형 영역을 벗어나는 부분 숨기기 */
-  background-color: #1f2b6b;
+  top: 50%;
+  transform: translate(-50%, -50%) translateX(var(--image-translate-offset, 0));
+  width: 180%;
+  height: 180%;
+  transition: transform 1000ms ease, opacity 1000ms ease;
+  overflow: hidden;
 }
-
-.modal-wrapper.open .modal {
-  margin-top: -200px;
+.app__bg__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.app__bg__image.current--image {
   opacity: 1;
+  --image-translate-offset: 0;
+}
+.app__bg__image.previous--image, .app__bg__image.next--image {
+  opacity: 0;
+}
+.app__bg__image.previous--image {
+  --image-translate-offset: -25%;
+}
+.app__bg__image.next--image {
+  --image-translate-offset: 25%;
 }
 
-.btn-close {
-  font-size: 30px;
-  display: block;
-  float: right;
-  color: #fff;
+.cardList {
+  position: absolute;
+  width: calc(3 * var(--card-width));
+  height: auto;
 }
-
-.content {
-  padding: 5%;
-}
-
-.exit-number {
+.cardList__btn {
+  --btn-size: 35px;
+  width: var(--btn-size);
+  height: var(--btn-size);
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+.cardList__btn.btn--left {
+  left: -5%;
+}
+.cardList__btn.btn--right {
+  right: -5%;
+}
+.cardList__btn .icon {
+  width: 100%;
+  height: 100%;
+}
+.cardList__btn .icon svg {
+  width: 100%;
+  height: 100%;
+}
+.cardList .cards__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.card {
+  --card-translateY-offset: 100vh;
+  position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  top: 50%;
+  transform: translate(-50%, -50%) translateX(var(--card-translateX-offset)) translateY(var(--card-translateY-offset)) rotateY(var(--card-rotation-offset)) scale(var(--card-scale-offset));
+  display: inline-block;
+  width: var(--card-width);
+  height: var(--card-height);
+  transition: transform var(--card-transition-duration) var(--card-transition-easing);
+  user-select: none;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 1;
+  transition: opacity var(--card-transition-duration) var(--card-transition-easing);
+  opacity: calc(1 - var(--opacity));
+}
+.card__image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.card__image img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card.current--card {
+  --current-card-rotation-offset: 0;
+  --card-translateX-offset: 0;
+  --card-rotation-offset: var(--current-card-rotation-offset);
+  --card-scale-offset: 1.2;
+  --opacity: 0.8;
+}
+.card.previous--card {
+  --card-translateX-offset: calc(-1 * var(--card-width) * 1.1);
+  --card-rotation-offset: 25deg;
+}
+.card.next--card {
+  --card-translateX-offset: calc(var(--card-width) * 1.1);
+  --card-rotation-offset: -25deg;
+}
+.card.previous--card, .card.next--card {
+  --card-scale-offset: 0.9;
+  --opacity: 0.4;
 }
 
-.exit-number h1 {
-  font-size: 550px;
-  color: #ffffff;
-  margin: 0;
+.infoList {
+  position: absolute;
+  width: calc(3 * var(--card-width));
+  height: var(--card-height);
+  pointer-events: none;
+}
+.infoList .info__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
-#startSpeechButton {
-  background-color: #4CAF50; /* 버튼 배경색 */
-  color: white; /* 버튼 텍스트 색상 */
-  border: none; /* 테두리 없음 */
-  padding: 15px 20px; /* 내부 여백 */
-  text-align: center; /* 텍스트 중앙 정렬 */
-  text-decoration: none; /* 텍스트에 밑줄 없음 */
-  display: inline-block; /* 인라인 블록 요소로 표시 */
-  font-size: 16px; /* 폰트 크기 */
-  margin: 10px; /* 마진 설정 */
-  cursor: pointer; /* 커서 스타일 설정 */
-  border-radius: 5px; /* 버튼 모서리 둥글게 만들기 */
-  transition: background-color 0.3s ease; /* 배경색 전환 애니메이션 */
+.info {
+  margin-bottom: calc(var(--card-height) / 8);
+  margin-left: calc(var(--card-width) / 1.5);
+  transform: translateZ(2rem);
+  transition: transform var(--card-transition-duration) var(--card-transition-easing);
+}
+.info .text {
+  position: relative;
+  font-family: "Montserrat";
+  font-size: calc(var(--card-width) * var(--text-size-offset, 0.2));
+  white-space: nowrap;
+  color: #fff;
+  width: fit-content;
+}
+.info .name,
+.info .location {
+  text-transform: uppercase;
+}
+.info .location {
+  font-weight: 800;
+}
+.info .location {
+  --mg-left: 40px;
+  --text-size-offset: 0.12;
+  font-weight: 600;
+  margin-left: var(--mg-left);
+  margin-bottom: calc(var(--mg-left) / 2);
+  padding-bottom: 0.8rem;
+}
+.info .location::before, .info .location::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  left: 0%;
+  transform: translate(calc(-1 * var(--mg-left)), -50%);
+}
+.info .location::before {
+  top: 50%;
+  width: 20px;
+  height: 5px;
+}
+.info .location::after {
+  bottom: 0;
+  width: 60px;
+  height: 2px;
+}
+.info .description {
+  --text-size-offset: 0.065;
+  font-weight: 500;
+}
+.info.current--info {
+  opacity: 1;
+  display: block;
+}
+.info.previous--info, .info.next--info {
+  opacity: 0;
+  display: none;
 }
 
-/* 버튼 호버 시 배경색 변경 */
-#startSpeechButton:hover {
-  background-color: #45a049; /* 호버 시 배경색 변경 */
+.loading__wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  z-index: 200;
+}
+.loading__wrapper .loader--text {
+  color: #fff;
+  font-family: "Montserrat";
+  font-weight: 500;
+  margin-bottom: 1.4rem;
+}
+.loading__wrapper .loader {
+  position: relative;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.loading__wrapper .loader span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: red;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@media only screen and (min-width: 800px) {
+  :root {
+    --card-width: 250px;
+    --card-height: 400px;
+  }
 }

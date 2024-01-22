@@ -33,6 +33,13 @@ def escort():
 def news():
     return render_template('news.html')
 
+@app.route('/test')
+def test():
+    return render_template('test.html')
+
+@app.route('/etest')
+def etest():
+    return render_template('etest.html')
 
 @app.route('/info')
 def info():
