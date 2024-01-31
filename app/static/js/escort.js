@@ -95,3 +95,43 @@ function closeModal() {
   var modalWrapper = document.querySelector(".modal-wrapper");
   modalWrapper.classList.remove("open");
 }
+
+const exitVoiceTexts = {
+  "button1": "일번 출구로 안내합니다.",
+  "button2": "이번 출구로 안내합니다.",
+  "button3": "삼번 출구로 안내합니다.",
+  "button4": "사번 출구로 안내합니다.",
+  "button19": "십구번 출구로 안내합니다.",
+  "button20": "이십번 출구로 안내합니다.",
+  "button21": "이십일번 출구로 안내합니다.",
+  "button22": "이십이번 출구로 안내합니다."
+};
+
+// 각 버튼에 대한 이벤트 리스너 추가
+for (let i = 1; i <= 22; i++) {
+  const buttonId = "button" + i;
+  const button = document.querySelector("#" + buttonId + ".image-button");
+
+  if (button) {
+    button.addEventListener("click", () => {
+      if (
+        typeof SpeechSynthesisUtterance === "undefined" ||
+        typeof window.speechSynthesis === "undefined"
+      ) {
+        alert("이 브라우저는 음성 합성을 지원하지 않습니다.");
+        return;
+      }
+
+      const message = new SpeechSynthesisUtterance();
+      message.lang = "kr";
+      message.pitch = 1;
+      message.rate = 1;
+      message.volume = 1;
+
+      if (exitVoiceTexts.hasOwnProperty(buttonId)) {
+        message.text = exitVoiceTexts[buttonId];
+        window.speechSynthesis.speak(message);
+      }
+    });
+  }
+}

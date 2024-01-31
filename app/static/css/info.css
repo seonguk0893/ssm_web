@@ -259,18 +259,18 @@ section .content-list .prev-arrow {
   transform: rotateY(180deg);
 }
 section .content-list .prev {
-  font-size: 3rem;
+  font-size: 5rem;
   position: absolute;
-  top: 50%;
-  left: 10px;
+  top: 45%;
+  left: 30px;
   transform: translateY(-10px);
   cursor: pointer;
 }
 section .content-list .next {
-  font-size: 3rem;
+  font-size: 5rem;
   position: absolute;
-  top: 50%;
-  right: 10px;
+  top: 45%;
+  right: 30px;
   transform: translateY(-10px);
   cursor: pointer;
 }
@@ -280,6 +280,7 @@ section .content-list .next {
     bottom: 10%;
   }
 }
+
 @media screen and (max-width: 982px) {
   nav {
     position: relative;
