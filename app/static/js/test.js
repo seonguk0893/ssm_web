@@ -16,10 +16,8 @@ let speechToText = "";
 let alertShown = false; // 알림이 표시되었는지 여부를 나타내는 플래그
 
 function clickButton(buttonId) {
-  if (!alertShown) {
-    alert(`버튼 ${buttonId}이(가) 클릭되었습니다!`);
-    alertShown = true; // 알림이 표시되었음을 기록
-  }
+  alert(`버튼 ${buttonId}이(가) 클릭되었습니다!`);
+  recognition.stop();
 }
 
 recognition.addEventListener("result", (e) => {
@@ -37,44 +35,44 @@ recognition.addEventListener("result", (e) => {
     ) {
       clickButton(1);
     } else if (
-        transcript.includes("이번") ||
-        transcript.includes("이 번") ||
-        transcript.includes("2번") ||
-        transcript.includes("2 번")
+      transcript.includes("이번") ||
+      transcript.includes("이 번") ||
+      transcript.includes("2번") ||
+      transcript.includes("2 번")
     ) {
       clickButton(2);
     } else if (
-        transcript.includes("삼번") ||
-        transcript.includes("삼 번") ||
-        transcript.includes("3번") ||
-        transcript.includes("3 번")
+      transcript.includes("삼번") ||
+      transcript.includes("삼 번") ||
+      transcript.includes("3번") ||
+      transcript.includes("3 번")
     ) {
       clickButton(3);
     } else if (
-        transcript.includes("사번") ||
-        transcript.includes("사 번") ||
-        transcript.includes("4번") ||
-        transcript.includes("4 번")
+      transcript.includes("사번") ||
+      transcript.includes("사 번") ||
+      transcript.includes("4번") ||
+      transcript.includes("4 번")
     ) {
       clickButton(4);
     } else if (
-        transcript.includes("19번") ||
-        transcript.includes("19 번")
+      transcript.includes("19번") ||
+      transcript.includes("19 번")
     ) {
       clickButton(5);
     } else if (
-        transcript.includes("20번") ||
-        transcript.includes("20 번")
+      transcript.includes("20번") ||
+      transcript.includes("20 번")
     ) {
       clickButton(6);
     } else if (
-        transcript.includes("21번") ||
-        transcript.includes("21 번")
+      transcript.includes("21번") ||
+      transcript.includes("21 번")
     ) {
       clickButton(7);
     } else if (
-        transcript.includes("22번") ||
-        transcript.includes("22 번")
+      transcript.includes("22번") ||
+      transcript.includes("22 번")
     ) {
       clickButton(8);
     }
@@ -94,7 +92,20 @@ document.getElementById("startSpeechButton").addEventListener("click", function 
   alertShown = false; // Speech Recognition 시작 시 알림이 표시되지 않았음을 나타내는 플래그 초기화
 });
 
+// 문서 로드가 완료되면 버튼 클릭 이벤트 설정
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".image-button").forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      const buttonId = button.getAttribute("id").replace("button", ""); // 버튼의 ID에서 번호 추출
+      clickButton(buttonId);
+    });
+  });
+});
+
 recognition.addEventListener("end", function () {
-  recognition.start();
-  alertShown = false; // Speech Recognition 종료 시 알림이 표시되지 않았음을 나타내는 플래그 초기화
+  // 음성인식 종료 시 알림이 표시되지 않았을 때에만 다시 시작
+  if (!alertShown) {
+    recognition.start();
+  }
 });
