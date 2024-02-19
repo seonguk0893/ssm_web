@@ -71,7 +71,8 @@ nav .right .menu-list li {
   align-items: center;
   justify-content: center;
   list-style: none;
-  padding: 0.2em 1em 0.5em 1em;
+  margin-right: 2em;
+  /* padding: 0.2em 1em 0.5em 1em; */
 }
 nav .right .menu-list li a {
   font-size: 1.2rem;

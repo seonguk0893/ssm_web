@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-    <!-- <meta http-equiv="refresh" content="5; url=/escort"> -->
+    <!--<meta http-equiv="refresh" content="10; url=/index2"> -->
     <title>금남지하도상가 : 상가정보</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="static/css/templatemo-style.css" />
@@ -26,7 +26,10 @@
         <div class="mobile-menu">메뉴</div>
         <ul class="menu-list">
           <li class="nav-item">
-            <a class="nav-link nav-link-1 active" href="/" style="font-size: 1.75rem;">실내환경정보</a>
+            <a class="nav-link nav-link-1 active" href="/" style="font-size: 1.75rem;">환경정보1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-1" href="/index2" style="font-size: 1.5rem;">환경정보2</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-link-1" href="/escort" style="font-size: 1.5rem;">출입구정보</a>
@@ -39,6 +42,7 @@
     </nav>
 
     <div class="container-fluid tm-mt-60">
+      <h1 id="robot-number">(써니봇 1)</h1>
       <h5 id="Date_"></h5>
       <div class="row tm-mb-74">
         <!-- Earnings (Monthly) Card Example -->
@@ -204,6 +208,32 @@
 
       }
       getToday();
+    </script>
+    <script>
+      window.onload = function() {
+        // 페이지 로드 시에 실행될 코드
+        playWelcomeVoice();
+      };
+      
+      // 페이지 로드 시 실행할 함수
+      function playWelcomeVoice() {
+          if (typeof Audio === "undefined") {
+              alert("이 브라우저는 오디오를 지원하지 않습니다.");
+              return;
+          }
+      
+          var welcomeAudio = new Audio("/static/audio/welcome.wav");
+          welcomeAudio.play();
+      }
+      
+      // 페이지를 이동할 때 음성 재생을 멈추는 함수
+      function stopWelcomeVoice() {
+          if (typeof welcomeVoice !== "undefined" && window.speechSynthesis.speaking) {
+              window.speechSynthesis.cancel();
+          }
+      }
+
+    
     </script>
 
   </body>

@@ -2,15 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
     <title>동구청 뉴스룸</title>
     <link rel="stylesheet" href="static/css/news.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+    />
   </head>
-  
   <body>
     <div class="top-bar">
-      <img src="/static/img/0.png">
+      <img src="/static/img/0.png" />
     </div>
     <div class="main-content">
       <div class="slideshow-container">
@@ -32,19 +37,47 @@
         <div class="mySlides">
           <img src="/static/img/news6.png" alt="Slide 6" />
         </div>
-        <div class="mySlides">
-          <img src="/static/img/news7.png" alt="Slide 7" />
-        </div>
-        <div class="mySlides">
-          <img src="/static/img/news8.png" alt="Slide 8" />
-        </div>
-        <div class="mySlides">
-          <img src="/static/img/news9.png" alt="Slide 9" />
-        </div>
       </div>
     </div>
-    <img src="/static/img/donggu.png">
+    <img src="/static/img/donggu.png" />
 
     <script src="static/js/news.js"></script>
+    <script>
+      // 음성 재생을 위한 변수
+      let welcomeVoice;
+
+      // 페이지 로드 시 실행할 함수
+      window.addEventListener('DOMContentLoaded', function () {
+          playWelcomeVoice();
+      });
+
+      // 페이지 언로드 시 실행할 함수
+      window.addEventListener('beforeunload', function () {
+          stopWelcomeVoice();
+      });
+
+      // 사용자 활동에 의해 호출되는 함수
+      function playWelcomeVoice() {
+          if (typeof SpeechSynthesisUtterance === "undefined" || typeof window.speechSynthesis === "undefined") {
+              alert("이 브라우저는 음성 합성을 지원하지 않습니다.");
+              return;
+          }
+
+          welcomeVoice = new SpeechSynthesisUtterance();
+          welcomeVoice.lang = "ko-KR";
+          welcomeVoice.pitch = 1;
+          welcomeVoice.rate = 1;
+          welcomeVoice.volume = 1;
+          welcomeVoice.text = "안녕하세요 써니봇입니다. 무엇을 도와드릴까요?";
+          window.speechSynthesis.speak(welcomeVoice);
+      }
+
+      // 페이지를 이동할 때 음성 재생을 멈추는 함수
+      function stopWelcomeVoice() {
+          if (window.speechSynthesis.speaking) {
+              window.speechSynthesis.cancel();
+          }
+      }
+    </script>
   </body>
 </html>
