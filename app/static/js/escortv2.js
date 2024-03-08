@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return window.btoa(unescape(encodeURIComponent(str)));
     }
     
-    const apiKey = 'AIzaSyDK2TYJ_7VM3iJ524lB9VczLjBe80WaNC0';
+    const apiKey = '개인 KEY값';
     
     function transcribeAudio(audioContent) {
         // UTF-8로 문자열을 Base64로 인코딩
