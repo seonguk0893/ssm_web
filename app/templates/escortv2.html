@@ -2,13 +2,31 @@
 <html lang="kr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-    <!-- <meta http-equiv="refresh" content="10; url=/" /> -->
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!--<meta http-equiv="refresh" content="10; url=/" /> -->
     <title>금남지하도상가 : 상가정보</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="static/css/escortv2.css" />
+    <link rel="icon" href="static/img/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="static/img/favicon.ico" />
+    <link rel="stylesheet" href="static/css/escort.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
   </head>
 
   <body>
@@ -22,16 +40,25 @@
         <div class="mobile-menu">메뉴</div>
         <ul class="menu-list">
           <li class="nav-item">
-            <a class="nav-link nav-link-1" href="/" style="font-size: 1.5rem">환경정보1</a>
+            <a class="nav-link nav-link-1" href="/" style="font-size: 1.5rem"
+              >환경정보1</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-1" href="/index2" style="font-size: 1.5rem">환경정보2</a>
+            <a
+              class="nav-link nav-link-1"
+              href="/index2"
+              style="font-size: 1.5rem"
+              >환경정보2</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-1 active" href="/escort" style="font-size: 1.75rem">출입구정보</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-1" href="/info" style="font-size: 1.5rem">상가정보</a>
+            <a
+              class="nav-link nav-link-1 active"
+              href="/escort"
+              style="font-size: 1.75rem"
+              >출입구정보</a
+            >
           </li>
         </ul>
       </div>
@@ -57,10 +84,14 @@
         </div>
 
         <div class="answer">음성인식으로 안내를 도와드립니다.</div>
-        <div class="query">예시 : 1번 출구로 안내해주세요, 금남공원 출구로 안내해주세요.</div>
+        <div class="query">
+          예시 : 1번 출구로 안내해주세요, 금남공원 출구로 안내해주세요.
+        </div>
       </div>
 
-      <button class="map-button"><i class="fas fa-map" style="color: black"></i>지하상가 지도</button>
+      <button class="map-button">
+        <i class="fas fa-map" style="color: black"></i>지하상가 지도
+      </button>
 
       <div class="img-modal">
         <div class="modal-content">
@@ -85,7 +116,9 @@
       <div class="modal-wrapper">
         <div class="modal">
           <div class="head">
-            <a class="btn-close trigger" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <a class="btn-close trigger" href="#"
+              ><i class="fa fa-times" aria-hidden="true"></i
+            ></a>
           </div>
           <div class="content">
             <div class="exit-number">
@@ -98,6 +131,5 @@
     </main>
 
     <script src="static/js/escortv2.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   </body>
 </html>
