@@ -41,4 +41,34 @@ This project is built with :
 ---
 
 
+
+## 페이지 및 기능 설명
+
+### 환경정보 페이지
+  - 지하상가의 환경정보를 담은 메인화면
+  - 실제 센서가 로봇에 부착되어 있어 환경정보를 실시간으로 제공
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/53c110d4-4de4-4389-8db6-6918c68e6bb7">
+
+
+### 출입구정보 페이지
+  - 지하상가 출입구 정보가 버튼형식으로 구성
+  - 버튼을 클릭하면 로봇이 해당 출입구 앞으로 사용자를 안내
+  - 음성인식을 통한 출입구 안내 ("0번 출구" 단어 인식 후 해당 번호 출입구로 안내)
+  - 지하상가 지도 서비스 제공
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/5ee0487a-eab9-42ca-9503-19a54c993e92">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/69d42b99-f55e-4693-9578-ed1808d50126">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/7dbcd4c9-ae3f-467d-a777-d70929d5a18f">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/c4ceb9d1-b272-4416-b2d0-ef266618d502">
+
+
+### 상가정보 페이지
+  - 지하상가에 있는 상가정보 제공
+  - 상가위치, 상가카테고리 등 기본정보 제공
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/e67c5490-6323-4ebe-9860-077eadba75c9">
+
+
+
 #### ssm_web was created by Seongha Kim, Seonguk Kim
